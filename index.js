@@ -31,7 +31,7 @@ app.post("/", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
-  console.log(res.body);
+  console.log(req.body);
   return res.send("success");
 });
 
