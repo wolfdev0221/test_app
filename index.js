@@ -1,34 +1,34 @@
-import express from 'express';
-import crypto from 'crypto';
+import express from "express";
+import crypto from "crypto";
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 const SECRET_KEY = "a0e9b07e12f144dea93f44d859fe6916";
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
-app.post('/', (req, res) => {
-    // Create a SHA-256 HMAC with the shared secret key
-    const hmac = crypto.createHmac('sha256', SECRET_KEY);
-  
-    // Update the HMAC with the request body
-    // req.body represents the POST body as a string, assuming that it hasn't been parsed to JSON
-    hmac.update(req.body);
-  
-    // Compare the base64 HMAC digest against the signature passed in the header
-    if (hmac.digest('base64') !== req.headers['rye-hmac-signature-v1']) {
-      // The request is not authentic
-      return res.status(401).send('Unauthorized');
-    }
-  });
+app.post("/", (req, res) => {
+  // Create a SHA-256 HMAC with the shared secret key
+  const hmac = crypto.createHmac("sha256", SECRET_KEY);
 
-app.post('/test', (req, res) => {
-  return res.send("successful")
-})
+  // Update the HMAC with the request body
+  // req.body represents the POST body as a string, assuming that it hasn't been parsed to JSON
+  hmac.update(req.body);
+
+  // Compare the base64 HMAC digest against the signature passed in the header
+  if (hmac.digest("base64") !== req.headers["rye-hmac-signature-v1"]) {
+    // The request is not authentic
+    return res.status(401).send("Unauthorized");
+  }
+});
+
+app.post("/test", (req, res) => {
+  return res.send(res);
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
