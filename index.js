@@ -4,11 +4,11 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const SECRET_KEY = "a0e9b07e12f144dea93f44d859fe6916";
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
