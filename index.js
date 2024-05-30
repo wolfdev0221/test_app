@@ -17,13 +17,14 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log("rye webhook received");
-  console.log(req);
+  console.log(req.body);
   // Create a SHA-256 HMAC with the shared secret key
   const hmac = crypto.createHmac("sha256", SECRET_KEY);
 
   // Update the HMAC with the request body
   // req.body represents the POST body as a string, assuming that it hasn't been parsed to JSON
-  hmac.update(req.body);
+  // hmac.update(req.body);
+  return res.status(200);
 
   // Compare the base64 HMAC digest against the signature passed in the header
   if (hmac.digest("base64") !== req.headers["rye-hmac-signature-v1"]) {
