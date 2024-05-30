@@ -29,7 +29,8 @@ app.post("/", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
-  return res.send(res);
+  console.log(res.body);
+  return res.send("success");
 });
 
 app.listen(port, () => {
