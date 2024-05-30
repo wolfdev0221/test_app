@@ -16,6 +16,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  console.log("rye webhook received");
+  console.log(req.body);
   // Create a SHA-256 HMAC with the shared secret key
   const hmac = crypto.createHmac("sha256", SECRET_KEY);
 
