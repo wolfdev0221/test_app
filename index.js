@@ -31,6 +31,7 @@ app.post("/", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
+  console.log("webhook received");
   console.log(req.body);
   return res.send("success");
 });
