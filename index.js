@@ -40,16 +40,16 @@ app.post("/test", (req, res) => {
 });
 
 app.post("/vgc-shipping", (req, res) => {
-  const shipping_info = {
-    firstName: req.body.firstname,
-    lastName: req.body.lastname,
-    email: req.body.email,
-    phone: req.body.phone,
-    provinceCode: stateMapping[req.body.province] || null,
-    countryCode: countryMapping[req.body.country] || null,
-    postalCode: req.body.zip,
-  };
-  console.log(shipping_info);
+  // const shipping_info = {
+  //   firstName: req.body.firstname,
+  //   lastName: req.body.lastname,
+  //   email: req.body.email,
+  //   phone: req.body.phone,
+  //   provinceCode: stateMapping[req.body.province] || null,
+  //   countryCode: countryMapping[req.body.country] || null,
+  //   postalCode: req.body.zip,
+  // };
+  console.log(req.params, req.body);
 });
 
 app.listen(port, () => {
