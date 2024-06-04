@@ -52,6 +52,10 @@ app.post("/vgc-shipping", (req, res) => {
   console.log(req.params, req.body);
 });
 
+app.post("/checkout-update", (req, res) => {
+  console.log("44444444", req.body);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
