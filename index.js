@@ -40,16 +40,25 @@ app.post("/test", (req, res) => {
 });
 
 app.post("/vgc-shipping", (req, res) => {
-  // const shipping_info = {
-  //   firstName: req.body.firstname,
-  //   lastName: req.body.lastname,
-  //   email: req.body.email,
-  //   phone: req.body.phone,
-  //   provinceCode: stateMapping[req.body.province] || null,
-  //   countryCode: countryMapping[req.body.country] || null,
-  //   postalCode: req.body.zip,
-  // };
-  console.log(req.params, req.body);
+  const shipping_info = {
+    firstName: req.body["shipping_address"]["first_name"],
+    lastName: req.body["shipping_address"]["last_name"],
+    email: req.body.email,
+    phone: req.body["shipping_address"]["phone"],
+    provinceCode: req.body["shipping_address"]["province_code"],
+    countryCode: req.body["shipping_address"]["country_code"],
+    postalCode: req.body["shipping_address"]["zip"],
+  };
+  const line_items = req.body.line_items;
+  const cart_items = [];
+  line_items.array.forEach((element) => {
+    cart_items.push({
+      variantId: element.variant_id,
+      quantity: element.quantity,
+    });
+  });
+
+  console.log(shipping_info, cart_items);
 });
 
 app.post("/checkout-update", (req, res) => {
